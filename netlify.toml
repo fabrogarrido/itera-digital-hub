@@ -1,0 +1,22 @@
+# Reglas de construcción
+[build]
+  publish = "."
+
+# Configuración de Headers (Seguridad y Caché)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Blindaje contra ataques de inyección y clickjacking
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    
+    # Política de Seguridad de Contenido (CSP)
+    # Esto le dice al navegador que solo confíe en scripts de tu sitio
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:;"
+
+    # Forzar siempre HTTPS (HSTS)
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+    # Privacidad: No enviar info del sitio a otros links
+    Referrer-Policy = "no-referrer-external"
