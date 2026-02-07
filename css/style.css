@@ -1025,3 +1025,10 @@ footer {
     box-shadow: 0 0 15px rgba(37, 99, 235, 0.2); 
     transform: translateY(-2px); /* Se levanta un poquito */
 }
+
+/* Forzar ocultar mouse en móviles */
+@media (max-width: 768px) {
+    .scroll-indicator {
+        display: none !important;
+    }
+}
